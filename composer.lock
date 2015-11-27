@@ -1,0 +1,75 @@
+{
+    "_readme": [
+        "This file locks the dependencies of your project to a known state",
+        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
+        "This file is @generated automatically"
+    ],
+    "hash": "fd211dc7bda2a6e7488d56abcce46d89",
+    "content-hash": "dd086d2820fd7f3a35d9c9b54335656b",
+    "packages": [
+        {
+            "name": "scorpio/sphinx-search",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/scorpioframework/sphinx-search.git",
+                "reference": "79069a66912a15e8bd382dde9e30d4a4c83c4ec7"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/scorpioframework/sphinx-search/zipball/79069a66912a15e8bd382dde9e30d4a4c83c4ec7",
+                "reference": "79069a66912a15e8bd382dde9e30d4a4c83c4ec7",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.5.0"
+            },
+            "require-dev": {
+                "codeception/codeception": "2.1.*"
+            },
+            "suggest": {
+                "ext-sphinx": "*",
+                "gigablah/sphinxphp": "2.0.*"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.2-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "BSD"
+            ],
+            "authors": [
+                {
+                    "name": "Dave Redfern",
+                    "email": "dave@scorpioframework.com",
+                    "homepage": "http://www.madagasgar.com"
+                }
+            ],
+            "description": "A set of classes wrapping the SphinxClient extension in a object-oriented way.",
+            "keywords": [
+                "Sphinx Search",
+                "scorpio",
+                "sphinx"
+            ],
+            "time": "2015-09-28 01:43:32"
+        }
+    ],
+    "packages-dev": [],
+    "aliases": [],
+    "minimum-stability": "dev",
+    "stability-flags": [],
+    "prefer-stable": false,
+    "prefer-lowest": false,
+    "platform": {
+        "php": ">=5.5.0"
+    },
+    "platform-dev": []
+}

@@ -1,0 +1,25 @@
+{
+  "name": "scorpio/sphinx-search-laravel",
+  "type": "library",
+  "description": "Sphinx search container bindings / configuration for Laravel",
+  "keywords": [ "scorpio", "sphinx", "sphinx search", "laravel" ],
+  "minimum-stability": "dev",
+  "license": "BSD",
+  "authors": [
+    {
+      "name": "Dave Redfern",
+      "email": "dave@scorpioframework.com",
+      "homepage": "http://www.madagasgar.com"
+    }
+  ],
+  "autoload": {
+    "psr-4": {
+      "Scorpio\\SphinxSearchLaravel\\": "src/"
+    }
+  },
+  "require": {
+    "php": ">=5.5.0",
+    "laravel/framework": "5.1.*",
+    "scorpio/sphinx-search": "0.2.*"
+  }
+}
