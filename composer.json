@@ -3,7 +3,6 @@
   "type": "library",
   "description": "Sphinx search container bindings / configuration for Laravel",
   "keywords": [ "scorpio", "sphinx", "sphinx search", "laravel" ],
-  "minimum-stability": "dev",
   "license": "BSD",
   "authors": [
     {
@@ -18,8 +17,8 @@
     }
   },
   "require": {
-    "php": ">=5.5.0",
-    "laravel/framework": "5.1.*",
+    "php": ">=5.5.9",
+    "laravel/framework": "5.2.*",
     "scorpio/sphinx-search": "0.2.*"
   }
 }
