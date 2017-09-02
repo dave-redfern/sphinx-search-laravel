@@ -7,7 +7,7 @@ making it easier to use in a Laravel project.
 Requirements
 ------------
 
- * Laravel 5.1+
+ * Laravel 5.2+
  * Scorpio SphinxSearch
  * for composer installs, PHP Sphinx extension
 
@@ -51,48 +51,54 @@ The following services are automatically registered:
 
 Indexes can be defined in the config file and will be published as services:
 
-    'indexes' => [
-        'my_custom_sphinx_index' => [
-            'class'     => \Scorpio\SphinxSearch\SearchIndex::class,
-            'arguments' => [
-                'index'        => 'my_custom_sphinx_index',
-                'fields'       => [ 'available', 'fields', 'as_an_array' ],
-                'attributes'   => [ 'attribute1', 'attribute2' ],
-            ],
+```php
+'indexes' => [
+    'my_custom_sphinx_index' => [
+        'class'     => \Scorpio\SphinxSearch\SearchIndex::class,
+        'arguments' => [
+            'index'        => 'my_custom_sphinx_index',
+            'fields'       => [ 'available', 'fields', 'as_an_array' ],
+            'attributes'   => [ 'attribute1', 'attribute2' ],
         ],
     ],
+],
+```
 
 Note: the index name and fields are required and must match what is exposed in the
 Sphinx configuration.
 
 Additionally the result set and result record class can also be specified:
 
-    'indexes' => [
-        'my_custom_sphinx_index' => [
-            'class'     => \Scorpio\SphinxSearch\SearchIndex::class,
-            'arguments' => [
-                'index'        => 'my_custom_sphinx_index',
-                'fields'       => [ 'available', 'fields', 'as_an_array' ],
-                'attributes'   => [ 'attribute1', 'attribute2' ],
-                'result_set'   => MyResultSet::class,
-                'result_class' => MyCustomResult::class,
-            ],
+```php
+'indexes' => [
+    'my_custom_sphinx_index' => [
+        'class'     => \Scorpio\SphinxSearch\SearchIndex::class,
+        'arguments' => [
+            'index'        => 'my_custom_sphinx_index',
+            'fields'       => [ 'available', 'fields', 'as_an_array' ],
+            'attributes'   => [ 'attribute1', 'attribute2' ],
+            'result_set'   => MyResultSet::class,
+            'result_class' => MyCustomResult::class,
         ],
     ],
+],
+```
 
 Finally, for the really lazy!, the index can have a 'query' element added:
 
-    'indexes' => [
-        'my_custom_sphinx_index' => [
-            'class'     => \Scorpio\SphinxSearch\SearchIndex::class,
-            'query'     => true,
-            'arguments' => [
-                'index'        => 'my_custom_sphinx_index',
-                'fields'       => [ 'available', 'fields', 'as_an_array' ],
-                'attributes'   => [ 'attribute1', 'attribute2' ],
-            ],
+```php
+'indexes' => [
+    'my_custom_sphinx_index' => [
+        'class'     => \Scorpio\SphinxSearch\SearchIndex::class,
+        'query'     => true,
+        'arguments' => [
+            'index'        => 'my_custom_sphinx_index',
+            'fields'       => [ 'available', 'fields', 'as_an_array' ],
+            'attributes'   => [ 'attribute1', 'attribute2' ],
         ],
     ],
+],
+```
 
 A custom query service will be automatically registered in the container. The prefix
 can be customised in your config file with the default being "query.", so the
@@ -104,20 +110,22 @@ a query service when not needed.
 
 In your controller you can then access the query instance:
 
-    class MyController extends Controller
+```php
+class MyController extends Controller
+{
+
+    function indexAction(Request $request)
     {
+        // bind a search term somehow, apply filters etc. maybe check for keywords...
+        $query = app('query.my_custom_sphinx_index')
+            ->setQuery($request->query->get('keywords'));
 
-        function indexAction(Request $request)
-        {
-            // bind a search term somehow, apply filters etc. maybe check for keywords...
-            $query = app('query.my_custom_sphinx_index')
-                ->setQuery($request->query->get('keywords'));
+        $results = app('scorpio_sphinx_search.search_manager')->query($query);
 
-            $results = app('scorpio_sphinx_search.search_manager')->query($query);
-
-            // do something with the results.
-        }
+        // do something with the results.
     }
+}
+```
 
 For Laravel, you are encouraged to create custom SearchIndex classes for each index,
 and to then name then using the class name. Then they can be injected as dependencies.
