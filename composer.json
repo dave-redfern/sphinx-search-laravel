@@ -8,7 +8,7 @@
         "sphinx search",
         "laravel"
     ],
-    "license": "BSD",
+    "license": "BSD-3-Clause",
     "authors": [
         {
             "name": "Dave Redfern",
