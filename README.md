@@ -1,3 +1,5 @@
+This project is no longer being maintained. Please switch to foolz/sphinxql-query-builder.
+
 Scorpio SphinxSearchBundle
 ==========================
 
